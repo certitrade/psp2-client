@@ -30,7 +30,7 @@
   "build": "tsc -p source",
   "test": "jest",
   "test:watch": "watch jest",
-  "prepublish": "yarn build",
+  "prepare": "npm run build",
   "clean": "rm -rf build node_modules coverage"
  },
  "author": "Simon Mika <simon@mika.se>",
