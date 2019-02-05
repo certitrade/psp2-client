@@ -5,11 +5,6 @@
  "private": false,
  "main": "build/index.js",
  "typings": "build/index.d.ts",
- "release-it": {
-		"github": {
-			"release": true
-		}
-	},
  "jest": {
   "globals": {
    "ts-jest": {
@@ -38,7 +33,7 @@
   "test:watch": "watch jest",
   "prepare": "npm run build",
 	"clean": "rm -rf build node_modules coverage",
-	"release": "release-it -n patch"
+	"release": "np patch"
  },
  "author": "Simon Mika <simon@mika.se>",
  "license": "MIT",
@@ -53,7 +48,6 @@
   "babel-jest": "^23.0.0",
   "jest": ">=22 <24",
   "np": "^4.0.2",
-  "release-it": "^10.0.7",
   "ts-jest": "^23.10.5",
   "tslint": "^5.9.1",
   "typescript": "^3.0.3",
