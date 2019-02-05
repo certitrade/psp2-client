@@ -32,8 +32,8 @@
   "test": "jest",
   "test:watch": "watch jest",
   "prepare": "npm run build",
-	"clean": "rm -rf build node_modules coverage",
-	"release": "np patch"
+  "clean": "rm -rf build node_modules coverage",
+  "release": "np patch"
  },
  "author": "Simon Mika <simon@mika.se>",
  "license": "MIT",
