@@ -22,9 +22,12 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: touch environment.local.ts
+      - run: npm run build
+      - run: npm run test
+
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Release package
-          command: npm run release
+          command: npm publish
