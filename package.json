@@ -1,6 +1,6 @@
 {
  "name": "@certitrade/psp2-client",
- "version": "1.0.0",
+ "version": "1.0.1",
  "description": "",
  "private": false,
  "main": "build/index.js",
