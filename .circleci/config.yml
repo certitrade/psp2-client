@@ -21,6 +21,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Bump version
+          command: npm version patch
       - run: touch environment.local.ts
       - run: npm run build
       - run: npm run test
@@ -28,9 +31,6 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Release package
-          command: npm version patch
       - run:
           name: Release package
           command: npm publish
