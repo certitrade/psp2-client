@@ -30,4 +30,11 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: bash ./cirlceci/deploy.sh
+          command: |
+            git config --global -l
+            git config --global user.email circleci@circleci
+            git config --global user.name CircleCI
+            git remote --v
+            npm version patch
+            git push --tags
+            npm publish
