@@ -31,9 +31,9 @@ jobs:
       - run:
           name: Publish package
           command: |
-            git config --global -l
-            git config --global user.email circleci@circleci
-            git config --global user.name CircleCI
+            git config -l
+            git config user.email circleci@circleci
+            git config user.name CircleCI
             git remote --v
             npm version patch
             git push --tags
