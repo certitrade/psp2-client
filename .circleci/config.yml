@@ -32,10 +32,12 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-      - run: ls -al
-      - run: git checkout -- package-lock.json
-      - run: npm version patch
-      - run: git push --tags
-      - run: git status
-      - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
-      - run: npm publish
+      - run:
+          name: Bump version and Publish
+          command: |
+            git checkout -- package-lock.json
+            npm version patch
+            git push --tags
+            git status
+            echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+            npm publish
