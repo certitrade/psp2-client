@@ -33,7 +33,7 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run: ls -al
-      - run: git status
+      - run: git checkout -- package-lock.json
       - run: npm version patch
       - run: git push --tags
       - run: git status
