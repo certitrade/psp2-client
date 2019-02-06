@@ -9,12 +9,12 @@ jobs:
     steps:
       - checkout
       - run: 
-        name: Setup Git
-        command: |
-          git config -l
-          git config user.email circleci@circleci
-          git config user.name CircleCI
-          git remote --v
+          name: Setup Git
+          command: |
+            git config -l
+            git config user.email circleci@circleci
+            git config user.name CircleCI
+            git remote --v
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
