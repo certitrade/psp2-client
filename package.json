@@ -1,6 +1,6 @@
 {
  "name": "@certitrade/psp2-client",
- "version": "1.0.12",
+ "version": "1.1.0",
  "description": "",
  "private": false,
  "main": "build/index.js",
@@ -32,7 +32,7 @@
   "test": "jest",
   "test:watch": "watch jest",
   "prepare": "npm run build",
-  "release": "release-it patch",
+  "release": "release-it patch -n",
   "clean": "rm -rf build node_modules coverage"
  },
  "author": "Simon Mika <simon@mika.se>",
