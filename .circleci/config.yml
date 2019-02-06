@@ -8,6 +8,12 @@ jobs:
       - image: circleci/node:10.15-browsers
     steps:
       - checkout
+      - run: ls -al
+      - run: pwd
+      - run: git config -l
+      - run: git config user.email circleci@circleci
+      - run: git config user.name CircleCI
+      - run: git remote --v
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -22,19 +28,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publish package
-          command: |
-            git config -l
-            git config user.email circleci@circleci
-            git config user.name CircleCI
-            git remote --v
-            npm version patch
-            git push --tags
-            npm publish
+      - run: ls -al
+      - run: npm version patch
+#      - run: git push --tags
+      - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
+      - run: npm publish
