@@ -35,9 +35,9 @@ jobs:
       - run:
           name: Bump version and Publish
           command: |
-            git checkout -- package-lock.json
-            npm run release
-            git push --tags
+            'sed -i "s/\"version\":.*\"\([0-9\]*\.[0-9]*\.\)[0-9]*\",$/\"version\": \"\1${CIRCLE_BUILD_NUM}\",/g" package.json'
+            git add .
+            git commit -m "version commit"
             git status
             echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
             npm publish
