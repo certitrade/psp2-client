@@ -30,4 +30,4 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: ./cirlceci/deploy.sh
+          command: bash ./cirlceci/deploy.sh
