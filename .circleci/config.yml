@@ -37,6 +37,9 @@ jobs:
           command: |
             git checkout -- package-lock.json
             npm version patch
+            git add package.json
+            git commit -m "Bumped version"
+            git push
             git push --tags
             git status
             echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
