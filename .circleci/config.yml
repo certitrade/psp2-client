@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Bump version and Publish
           command: |
-            'sed -i "s/\"version\":.*\"\([0-9\]*\.[0-9]*\.\)[0-9]*\",$/\"version\": \"\1${CIRCLE_BUILD_NUM}\",/g" package.json'
+            sed -i "s/\"version\":.*\"\([0-9\]*\.[0-9]*\.\)[0-9]*\",$/\"version\": \"\1${CIRCLE_BUILD_NUM}\",/g" package.json
             git add .
             git commit -m "version commit"
             git status
