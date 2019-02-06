@@ -8,12 +8,13 @@ jobs:
       - image: circleci/node:10.15-browsers
     steps:
       - checkout
-      - run: ls -al
-      - run: pwd
-      - run: git config -l
-      - run: git config user.email circleci@circleci
-      - run: git config user.name CircleCI
-      - run: git remote --v
+      - run: 
+        name: Setup Git
+        command: |
+          git config -l
+          git config user.email circleci@circleci
+          git config user.name CircleCI
+          git remote --v
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -33,6 +34,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run: ls -al
       - run: npm version patch
-#      - run: git push --tags
+      - run: git push --tags
+      - run: git status
       - run: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > .npmrc
       - run: npm publish
