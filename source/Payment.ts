@@ -26,3 +26,17 @@ export interface Payment extends hal.Resource {
 		paywin: hal.Link,
 	}
 }
+
+// tslint:disable-next-line: no-namespace
+export namespace Payment {
+	export function is(payment: Payment | any): payment is Payment {
+		return typeof(payment) == "object" &&
+			typeof(payment.amount) == "string" &&
+			Currency.is(payment.currency) &&
+			(payment.language == "en" || payment.language == "sv") &&
+			payment.method == "CARD" &&
+			typeof(payment.reference) == "string" &&
+			typeof(payment.description) == "string" &&
+			typeof(payment.return_url) == "string"
+	}
+}
