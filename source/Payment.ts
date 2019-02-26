@@ -36,7 +36,6 @@ export namespace Payment {
 			(payment.language == "en" || payment.language == "sv") &&
 			payment.method == "CARD" &&
 			typeof(payment.reference) == "string" &&
-			typeof(payment.description) == "string" &&
-			typeof(payment.return_url) == "string"
+			typeof(payment.description) == "string"
 	}
 }
