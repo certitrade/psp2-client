@@ -1,5 +1,6 @@
 export { Connection } from "./Connection"
 export { Currency } from "./Currency"
+export { Error } from "./Error"
 export { Payment } from "./Payment"
 export { PaymentAccount } from "./PaymentAccount"
 export { Product } from "./Product"
