@@ -4,7 +4,7 @@ import { Payment } from "./Payment"
 import { default as fetch, RequestInit } from "node-fetch"
 
 export class Connection {
-	constructor(readonly baseUrl: string, private userType: "m" | "a", private userID: string, private userKey: string) {
+	constructor(readonly baseUrl: string, private userId: string, private userKey: string) {
 	}
 	private async fetch<T>(resource: string, init: RequestInit, body?: any): Promise<T | Error> {
 		const url = this.baseUrl + resource
@@ -16,7 +16,7 @@ export class Connection {
 			headers: {
 				...init.headers,
 				"content-type": "application/json; charset=utf-8",
-				authorization: "CertiTrade " + this.userType + this.userID + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
+				authorization: "CertiTrade " + this.userId + ":" + crypto.createHmac("sha256", this.userKey).update((init.method || "GET") + url + date + (init.body || "")).digest("hex"),
 				date,
 			},
 		})
